@@ -1,0 +1,142 @@
+
+section#lower_body{
+    width:75%;
+    margin:2% auto;
+    color:transparent;
+    font-size:1.3rem; 
+}
+
+section#lower_body{
+    background:url('https://indieground.net/wp-content/uploads/2023/03/Freebie-GradientTextures-Preview-06.jpg') repeat center/100%;
+    background-clip: border-box;
+    height:150%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    padding:15px 15px;
+}
+#Metrics{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+@media(max-width:1000px){
+    #Metrics{
+        flex-direction:column;
+        justify-content:center;
+    }
+    
+}
+
+@media(max-width:600px){
+    img#cover_photo {
+        height:600px;
+    }
+}
+
+#go_home{
+    color:grey;
+    padding:1px 2px 4px 5px;
+    font-size: 1.3em;
+}
+
+
+.strike{
+    text-decoration:line-through;
+}
+#ul_subtasks li{
+    text-decoration:none;
+    margin-bottom:4px;
+    list-style: none;
+}
+
+
+div#cover_div{
+    opacity:0.2;
+    width:100%;
+    height:500px;
+    position: absolute;
+    margin:1% auto;
+    z-index:-1;
+
+}
+img#cover_photo{
+    width: 75%;
+    height: 100%;
+    border-radius: 1%;
+    position: relative;
+    top:25%;
+    left:12%;   
+}
+
+
+
+input[type='checkbox']{
+margin: 4px 4px;
+}
+
+.progressbar{
+position: relative;
+height: 22px;
+border-radius: 1000px;
+background-color: #ffafcc;
+clip-path: inset(0 0 0 0 round 1000px);
+width:20%;
+height:10%;
+}
+
+.progressbar__value {
+height: 22px;
+transition: width 3.4s ease-in-out;
+border-radius: 1000px 0 0 1000px;
+background-color: #c8b6ff;
+will-change: width;
+}
+
+.progressbar > progress {
+opacity: 0;
+width: 1px;
+height: 1px;
+position: absolute;
+pointer-events: none;
+}
+
+/* button css */
+.button {
+    background-color: #7db9e8;
+    background: -webkit-linear-gradient(#7db9e8, #51A1E0);
+    background: linear-gradient(#7db9e8, #51A1E0);
+    border: solid 1px #1E5799;
+    border-radius: 3px;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 1px #fff;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font: bold 14px/32px'Open Sans', sans-serif;
+    height: 34px;
+    outline: none;
+    padding: 0 25px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px #1E5799;
+}
+.button:hover {
+    background-color: #51A1E0;
+    background: -webkit-linear-gradient(#51A1E0, #2689D7);
+    background: linear-gradient(#51A1E0, #2689D7);
+    border: solid 1px #1A4B84;
+    box-shadow: inset 0 0 2px #fff;
+}
+.button:active {
+    position: relative;
+    top: 1px;
+}
+.button:focus {
+    border: solid 1px #000;
+}
+
+
+/* button css-end*/

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+{% block pg_title %} 
+    {{pg_name | title }}
+{% endblock pg_title %}
+<!-- css files here-->
+
+{% block css_style %}
+<link rel="stylesheet" href="{% static "tasks/new.css" %}">
+<link rel="stylesheet" href="{% static "tasks/index.css" %}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+{% endblock css_style %}
+
+
+{% block js_block %}
+<script defer>
+    document.addEventListener("DOMContentLoaded",function(e){
+        const success=document.querySelector('div.success')
+        success.addEventListener('click',function(e){
+            e.target.remove();
+        });
+    });
+</script>
+{% endblock js_block %}
+
+{% block main_body %}
+
+
+{% if headline is 1 %}
+<div class="success"> <label> Record inserted
+    <span class="material-symbols-outlined">
+        check_circle
+        </span>    
+    </label>
+</div>
+     {% else %}
+{% endif%} 
+     
+<section id='todoform'>
+    <h2>Enter a Todo item</h2>
+    <form action="/tasks/new" class=".shadow2" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class='form-control' {% if field.errors %}errors {%endif%}>
+                {{field.errors}}
+                <span>{{field.label_tag}} {{field}}</span>
+                <!-- Any field that is outside of the form which u are returning
+                <input type="number" name='task_id' value={{tasks.task_id }} style="display:none"> -->
+                
+            </div>
+        {% endfor %}
+        <!--
+        <label for="task_deadline" class='form-control'>Task Deadline(date and time): 
+            <input  type="datetime-local" id="task_deadline" name="task_deadline">      
+        </label> -->
+        <button type='submit' class='button'>Add&nbsp;Item</button>
+        
+    </form>
+</section>
+
+{% endblock main_body%}

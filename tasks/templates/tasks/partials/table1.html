@@ -1,0 +1,33 @@
+<!--section for table code--> 
+<section id='todolist'>
+    <div></div>
+    <table class="zui-table zui-table-zebra zui-table-horizontal">
+        <thead>
+        <tr>
+            <th>Description</th>
+            <!--<th>Edit task</th>-->
+            <th>Tag</th>
+            <th>status</th><!--toggle button-->
+            <th>Time left</th>
+            <th>Deadline</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for e in tasks %}
+            <tr>
+         <!--       <td><a href="{% url "task_pg" e.task_id %}">{{e.task_desc|title}}</a></td> -->
+                <td><a href="{{ e.get_absolute_url }}" id='projects'>{{e.task_desc|title}}</a></td> 
+               <!-- <td><input type="button" value=Edit> </td> -->
+                <td>{{e.tag|title}}</td>
+                <td>{{e.status|yesno:"Completed,Pending"}}</td>
+                <td>
+                    <time>{{ctime|timesince:e.task_deadline}}</time>
+                </td>
+                <td>{{e.task_deadline}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div></div>
+</section>
+<!--section--> 

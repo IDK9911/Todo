@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load static %}
+{% block pg_title %} 
+    {{pg_name | title }}
+{% endblock pg_title %}
+<!-- css files here-->
+
+{% block css_style %}
+<link rel="stylesheet" href="{% static "tasks/new.css" %}">
+<link rel="stylesheet" href="{% static "tasks/index.css" %}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link rel="stylesheet" href="{% static "tasks/signup.css" %}">
+{% endblock css_style %}
+
+
+{% block js_block %}
+<script defer>
+    document.addEventListener('DOMContentLoaded',function(){
+        pwd_spans=document.querySelectorAll('#password_constraints span');
+        password=document.getElementById('id_password')
+        /*
+        Password must be atleast 8 characters
+        Password must contain a capital character
+        Password must contain a digit 
+         Password may contain special characters like @ or underscore*/
+        password.addEventListener("change",function(e){
+            console.log(e,"kazim")
+            if (password.value.length>=8){
+                pwd_spans[0].classList.add('cross')
+            }
+            else{
+                pwd_spans[0].classList.remove('cross')
+            }
+            if (password.value.search('[A-Z]')!=-1){
+                pwd_spans[1].classList.add('cross')
+            }
+            else{
+                pwd_spans[1].classList.remove('cross')
+            }
+            if (password.value.search('[0-9]')!=-1){
+                pwd_spans[2].classList.add('cross')
+            }
+            else{
+                pwd_spans[2].classList.remove('cross')
+            }
+            if (password.value.includes('@') || password.value.includes('_')){
+                pwd_spans[3].classList.add('cross')
+
+            }
+            else{
+                pwd_spans[3].classList.remove('cross')
+            }
+        })
+
+    });
+</script>
+{% endblock js_block %}
+
+{% block main_body %}
+
+     
+<section id='todoform'>
+    <h2>Sign up</h2>
+    <hr>
+    <form action="{% url "signup" %}" class=".shadow2" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class='form-control' {% if field.errors %}errors {%endif%}>
+                {{field.errors}}
+                <span>{{field.label_tag}} {{field}}</span>
+                <!-- Any field that is outside of the form which u are returning
+                <input type="number" name='task_id' value={{tasks.task_id }} style="display:none"> -->
+                
+            </div>
+                
+        {% endfor %}
+            <div><label>confirm password:<input type='password' name='password_2'></label></div>
+        <!--
+        <label for="task_deadline" class='form-control'>Task Deadline(date and time): 
+            <input  type="datetime-local" id="task_deadline" name="task_deadline">      
+        </label> -->
+        <button type='submit' class='button'>Sign&nbsp;Up</button>
+        
+    </form>
+</section>
+
+
+<section >
+    <div id="password_constraints">
+    <h4>Form Constraints</h4>
+    <span>Password must be atleast 8 characters</span>
+        <span>Password must contain a capital character</span>
+        <span>Password must contain a digit</span>
+        <span>Password may contain special characters like @ or underscore</span>
+    </div>
+</section>
+{% endblock main_body%}

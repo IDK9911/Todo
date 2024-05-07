@@ -1,0 +1,38 @@
+<!--section for table code--> 
+<section id='todolist'>
+    <div></div>
+    <table class="zui-table zui-table-zebra zui-table-horizontal">
+        <thead>
+        <tr>
+            <th>Description</th>
+            <th>Edit task</th>
+            <th>Tag</th>
+            <th>status</th><!--toggle button-->
+            <th><time>Duration<time></th>
+            <th>Time left</th>
+            <th>Percent</th>
+            <th>Deadline</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td><a href="{% url "editProject" slug=tasks.slug %} ">{{tasks.task_desc|title}}</a></td>
+                <td><input type="button" href={% url "editProject" slug=tasks.slug %} value=Edit> </td>
+                <td>{{tasks.tag|title}}</td>
+                <td>{{e.status|yesno:"Completed,Pending"}}</td>
+                <td><time>{{tasks.created_time | timesince:tasks.task_deadline }}</time></td>
+                <td>
+                    <time>{{ctime|timesince:tasks.task_deadline}}</time>
+                </td>
+                <td>
+                    <label id='percent'>{{percent|default:"Error"}}%</label>
+                    
+                </td>
+                <td>{{tasks.task_deadline}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+    <div></div>
+</section>
+<!--section--> 

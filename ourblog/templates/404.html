@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block pg_title %}404 Page Not found{% endblock pg_title %}
+
+{% block main_body %}
+<h2>This page doesn't exist</h2>
+<a href="{% url "home" %}">Go Back</a>
+{% endblock main_body %}

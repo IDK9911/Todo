@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load static %}
+{% block pg_title %} 
+    {{pg_name | title }}
+{% endblock pg_title %}
+<!-- css files here-->
+
+{% block css_style %}
+<link rel="stylesheet" href="{% static "tasks/task.css" %}">
+<link rel="stylesheet" href="{% static "tasks/index.css" %}">
+{% endblock css_style %}
+
+{% block js_block %}
+<script>
+
+    function progressBar(input,progress,task_num,subtask,progressValue){
+        function setValue(value) {
+            progressValue.style.width = `${value}%`;
+            progress.value = value;
+          }
+          
+        input.addEventListener('change', e => {
+        const value = e.target.value;
+        setValue(value);
+        });
+        
+        input.value=0;
+        input.value=parseInt(percent.textContent.replace('%',''));
+        setValue(input.value);
+
+    
+    }
+
+
+document.addEventListener("DOMContentLoaded", function(e){
+    //ur0.jp/nln2n
+    //initializations
+    const input = document.getElementById('value');
+    const progressValue = document.querySelector('.progressbar__value');
+    const progress = document.querySelector('progress');
+    const percent=document.getElementById('percent')
+    const subtask=document.querySelectorAll('#ul_subtasks li')
+    const task_num=document.getElementById('tasks_num')
+    const ul_subtasks=document.getElementById('ul_subtasks')
+
+    //Progress Bar
+    //
+    section_subtasks.addEventListener('click',(e)=>{
+        console.log(e)
+        x=e
+        if(e.target.nodeName=='INPUT'){
+            e.target.nextElementSibling.classList.toggle('strike')
+        }
+    });
+    progressBar(input,progress,task_num,subtask,progressValue)
+
+    
+    const cover_photo=document.getElementById('cover_photo')
+    let tag=""+`{{tasks.tag}}`
+    console.log(tag);
+    console.log(cover_photo);
+    if(tag=='errands'){
+        link='https://plus.unsplash.com/premium_photo-1683309563562-aa3cfde9ed10?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    }
+    else if(tag=='fitness' || tag=='health'){
+        link='https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&amp;w=2938&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    }
+    else if(tag=='mental health'){
+        link='https://images.unsplash.com/photo-1512438248247-f0f2a5a8b7f0?w=800&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bWVkaXRhdGlvbnxlbnwwfHwwfHx8MA%3D%3D'
+    }
+    else {
+        link='https://images.unsplash.com/photo-1523289333742-be1143f6b766?q=80&amp;w=2940&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    }
+
+    cover_photo.setAttribute('src',link);
+
+    // for setting # of tasks
+    task_num.innerText=subtask.length
+    //
+    
+});
+
+
+</script>
+{% endblock js_block %}
+{% block main_body %}
+<main>
+
+    <div id='cover_div'>
+    <img id="cover_photo" src="" alt="An image">
+    </div>
+    <a  id='go_home' href="{% url "home" %}" >Go Back</a>
+
+{% include "./partials/table.html" %}
+<section id='lower_body'>
+    <span>Metrics</span>
+    <div id='Metrics'>
+    <span> Task Created time: {{tasks.created_time}} </span>
+    <span> Time Available:{{percent|add:"-100"}}% </span>
+    <span style="color:#03045e">Time Used:-{{percent}}%</span>
+    </div>
+    <!--Progress bar Section-->
+    <section id="progress_section">
+        <div>Progress bar:</div>
+        {% include "./partials/progress_bar.html" %}
+    </section>    
+    
+    <!--Section subtasks-->
+    <section id='section_subtasks' >
+        <h3 >Subtasks are:</h3>
+        <div> 
+            <span>Total # of Tasks Left: <span id='tasks_num'></span> </span>
+            <ul id='ul_subtasks'>
+                {% for e in subtasks %}    
+                <li> <input type="checkbox"><label>{{e.subtask_desc}}<label></li>
+                {% endfor %}       
+                </ul>
+        </div>
+    
+        <form action="/{{slug}}/" method="POST">
+            {% csrf_token %}
+            <div class='form-control' {% if form.task_desc.errors %}errors {%endif%}>
+                {{form.task_desc.errors}}
+                <span>{{form.task_desc.label_tag}} {{form.task_desc}}</span>
+                <input type="number" name='task_id' value={{tasks.task_id }} style="display:none">
+                <button type='submit' class='button'>Add Subtask</button>
+            </div>
+        </form>
+    </section>
+    
+</section>
+
+
+
+
+</main>
+
+{% endblock main_body %}

@@ -1,0 +1,173 @@
+
+*{
+    box-sizing: border-box;
+}
+
+
+#landscape{
+    background:url('https://images.unsplash.com/photo-1528460033278-a6ba57020470?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTAxfHxwbGFpbiUyMGJhY2tncm91bmQlMjBwcm9mZXNzaW9uYWx8ZW58MHx8MHx8fDA%3D') no-repeat center center fixed;
+    background-size: cover;
+    width:70%;
+    height:100px;
+    margin:10px auto;
+    position:relative;
+    border-radius:5em;
+    box-shadow: outset 12px 12px 15px #444, 1px 1px 0 #ffc5a6; /* very bright color */
+    color:transparent;
+  }
+
+ 
+#landscape::before{
+    content:"⋆˚✧｡⋆Good Afternoon⋆˚✧｡⋆ ";
+    background:url('https://indieground.net/wp-content/uploads/2023/03/Freebie-GradientTextures-Preview-06.jpg') repeat center/100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-size:2em;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transition:font-size ease-in 1s,left ease-in-out 150ms;
+    opacity: 0.7;
+    overflow:hidden;
+    white-space: nowrap; 
+    border-right: 3px solid #fff; 
+    animation: 
+      typing 3s steps(30, end),
+      blink .3s steps(20,end);
+
+}
+
+
+@media(max-width:1200px){
+    #landscape::before{
+        font-size:1.8em;
+        transition:font-size ease-in 2s,left ease-in-out 1500ms;
+        left:20%;
+    }
+
+}
+
+@media(max-width:800px){
+    #landscape::before{
+        font-size:1.5em;
+        transition:font-size ease-in 2s,left ease-in-out 1500ms;
+        left:5%;
+    }
+
+}
+
+html{
+    font-family:Arial, Helvetica, sans-serif;
+}
+h1,h2,h3,h4{
+    margin-left:1%;
+}
+body{
+    margin-top:0;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+a:hover{
+    color:#59457B;
+    text-decoration: underline;
+}
+
+.zui-table a:visited{
+    color:darkblue
+}
+
+
+#todolist{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+
+.zui-table {
+    border: solid 1px #DDEEEE;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font: normal 13px Arial, sans-serif;
+    min-width:55%;
+    
+}
+
+#todolist div{
+    background-color: transparent;
+    flex-grow:1;
+    flex-shrink:1;
+}
+
+
+.zui-table thead th {
+    background-color: #c5eeee;
+    border: solid 1px #DDEEEE;
+    color: #336B6B;
+    padding: 10px;
+    text-align: left;
+    text-shadow: 1px 1px 1px #fff;
+    opacity:0.7;
+}
+.zui-table tbody td {
+    border: solid 1px #DDEEEE;
+    color: #333;
+    padding: 10px;
+    text-shadow: 1px 1px 1px #fff;
+}
+.zui-table-zebra tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+.zui-table-zebra tbody tr:nth-child(even) {
+    background-color: #EEF7EE;
+}
+.zui-table-zebra tbody tr:nth-child(3n) {
+    background-color:#e7d7e7
+}
+.zui-table-horizontal tbody td {
+    border-left: none;
+    border-right: none;
+}
+/* */
+
+/*
+.check {
+    background: #1e88e5;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+  
+
+  
+.zcodewriter h1 {
+    color: #fff;
+    overflow: hidden; 
+    border-right: 3px solid #fff; 
+    white-space: nowrap; 
+    margin: 0 auto; 
+    letter-spacing: 3px; 
+    animation: 
+      typing 3s steps(30, end),
+      blink .3s step-end infinite;
+}
+  
+*/
+
+  /* The typing effect */
+@keyframes typing {
+from { width: 1% }
+to { width: 50% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink {
+from, to { border-color: pink }
+50% { border-color: rgb(255, 255, 255) }
+}
+  

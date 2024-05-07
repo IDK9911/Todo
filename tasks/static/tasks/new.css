@@ -1,0 +1,202 @@
+
+  /* Set a background image by replacing the URL below */
+  body {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
+
+#headline{
+    width:100%;
+    text-align:right;
+}
+.success,.failure{
+    width:100%;
+    height:30px;
+    display: flex;
+    justify-content: flex-end;
+
+    
+}
+.success label{
+    background-color: #b5e48c;
+    text-align: right;
+    position: absolute;
+    top:10%;
+
+    
+}
+
+
+#todoform{
+    width:450px;
+    height:400px;
+    margin:5% auto;
+    opacity: 0.8;
+    border-radius: 2%;
+    border:2px solid white;
+    border-style:inset;
+    padding:14px 14px;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-color: #EEF7EE;
+    opacity: 0.5;
+    transition: opacity ease-in 500ms;
+
+}
+#todoform:hover {
+    opacity:1;
+    transition: opacity ease-in 1500ms;
+}
+
+@media(max-width:1200px){
+    #todoform{
+        flex-direction: column;
+        margin-top:6%;
+    }
+    .button{
+        min-height:24px;
+        width:80%;
+        
+    }
+
+}
+
+
+
+#todoform form{
+    display: flex;
+    flex-direction: column;
+    width:80%;
+    cursor:pointer;
+    align-items: flex-end;
+}
+
+#todoform button{
+    display: block;
+    min-width:40%;
+}
+
+.form-control{
+    margin-bottom:1rem;
+}
+
+label{
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.784), 5px 7px 0px rgba(0, 0, 0, 0.1);
+    font-size: 22px; 
+}
+
+#todoform label:hover{
+    color:hotpink;
+    transition: text-shadow ease-out 2ms;
+
+}
+
+hr{
+    margin:4px 8px;
+    opacity: 0.2;
+}
+h2 {
+    font-family: 'Pacifico', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-align: center;
+    text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.784), 5px 7px 0px rgba(0, 0, 0, 0.1);
+    margin-bottom: 14px;
+  }
+
+
+input[type="text"] {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #ec9800; /* original color */
+    border: 0;
+    box-shadow: inset 2px 2px 5px #444, 1px 1px 0 #ffc5a6; /* very bright color */
+    padding: 10px;
+    outline: none; /* remove the safari's focus outline border */         
+}
+
+input[type="text"]:focus {
+    background-color: orange; /* a bit brighter than the original color */
+
+}
+
+
+input,select{
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #ec9800; /* original color */
+    border: 0;
+    box-shadow: outset 2px 2px 5px #444, 1px 1px 0 #ffc5a6; /* very bright color */
+    padding: 10px;
+    outline: none; /* remove the safari's focus outline border */         
+}
+
+select{
+    padding: 8px;
+    text-align: center;
+    background-color: #ffc8dd;
+}
+
+.button,.red_button {
+    background-color: #7db9e8;
+    background: -webkit-linear-gradient(#7db9e8, #51A1E0);
+    background: linear-gradient(#7db9e8, #51A1E0);
+    border: solid 1px #1E5799;
+    border-radius: 3px;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 1px #fff;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font: bold 14px/32px'Open Sans', sans-serif;
+    height: 34px;
+    outline: none;
+    padding: 0 25px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px #1E5799;
+    margin:2px 2px;
+    align-self: flex-end;
+    margin-top:22px;
+}
+.button:hover,.red_button {
+    background-color: #51A1E0;
+    background: -webkit-linear-gradient(#51A1E0, #2689D7);
+    background: linear-gradient(#51A1E0, #2689D7);
+    border: solid 1px #1A4B84;
+    box-shadow: inset 0 0 2px #fff;
+}
+.button:active ,.red_button{
+    position: relative;
+    top: 1px;
+}
+.button:focus,.red_button {
+    border: solid 1px #000;
+}
+.red_button{
+
+    background: -webkit-linear-gradient(#f99eb0, #b21f2e);
+    background: linear-gradient(#f99eb0, #9b2f3b);
+}
+.red_button:hover{
+    background-color: #ac2909;
+
+    background: -webkit-linear-gradient(#98442f, #9f4732);
+    background: linear-gradient(#98442f, #9f4732);    
+}
+
+
+
+@media(max-width:500px){
+    .button{
+        font-size: 15px;
+        width:100%;
+        height:20px;
+        margin:4px 4px;
+    }
+
+}
